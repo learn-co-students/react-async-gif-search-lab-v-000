@@ -14,10 +14,10 @@ export default class GifListContainer extends Component{
     this.handleSubmit()
   }
 
-  handleSubmit = (query = 'dolphins') => {
-    fetch('http://api.giphy.com/v1/gifs/search?q=${query}&api_key=dc6zaTOxFJmzC&rating=g&limit=3')
+  handleSubmit = (query = 'kittens') => {
+    fetch(`https://api.giphy.com/v1/gifs/search?q=${query}&api_key=dc6zaTOxFJmzC&rating=g&limit=3`)
     .then(res => res.json())
-    .then(data => this.setState({
+    .then(({data}) => this.setState({
       gifs: data.map( gif => ({url: gif.images.original.url}))
     }))
   }
