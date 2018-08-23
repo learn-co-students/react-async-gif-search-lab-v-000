@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import GifSearch from '../components/GifSearch.js'
 import GifList from '../components/GifList.js'
 
-class GifListContainer extends Component {
+class GifListContainer extends React.Component {
 
   state = {
     gifs: []
