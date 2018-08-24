@@ -4,7 +4,9 @@ const GiftList = ( props ) => {
 
   return (
     <div>
-        {this.gifs.map(gif => '')}
+      <ul>
+        {this.gifs.map(gif => <li><img key={gif.url} src={gif.url} alt="gif"/></li>)}
+      <ul>
     </div>
   )
 }
