@@ -1,9 +1,14 @@
 import React, { Component } from "react";
 
 export default class GifList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {gifs: undefined}
-  }
 
+  renderGifs = () => this.props.gifs.map((gif) => <li key={gif.id}><img src={gif.images.original.url}/></li>)
+
+  render() {
+    return (
+      <ul>
+        {this.renderGifs()}
+      </ul>
+    );
+  }
 }
