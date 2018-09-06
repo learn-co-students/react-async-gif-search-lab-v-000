@@ -19,11 +19,11 @@ export default class GifSearch extends Component {
 
     render() {
         return (
-            <div>
-            <label htmlFor="form">Search Gifs</label>
+            <div className="col-sm-6">
+            <label htmlFor="form">Search Gifs:</label>
             <form onSubmit={this.handleSubmit} id="form">
                 <input type="text" value={this.state.query} onChange={this.handleChange}/>
-                <input type="submit" value="Go"/>
+                <input type="submit" className="btn btn-success" value="Go"/>
             </form>
 
             </div>
