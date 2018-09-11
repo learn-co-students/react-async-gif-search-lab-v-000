@@ -7,12 +7,12 @@ export default class GifListContainer extends Component {
     gifs: []
   }
 
-  componentsDidMount() {
+  componentDidMount() {
     this.handleSubmit()
   }
-
-  handleSubmit = (query = 'dog') => {
-    fetch(`https://api.giphy.com/v1/gifs/search?q=${query}&api_key=dc6zaTOxFJmzC&rating=g&limit=3`)
+  handleSubmit = (search = "monkey") => {
+    console.log(search)
+    fetch(`https://api.giphy.com/v1/gifs/search?q=${search}&api_key=dc6zaTOxFJmzC&rating=g&limit=3`)
     .then(res => res.json())
     .then(({data}) => this.setState({
       gifs: data.map( gif => ({
@@ -25,8 +25,7 @@ export default class GifListContainer extends Component {
     return (
       <div>
         <GifList gifs={this.state.gifs}/>
-        <GifSearch onSubmit={this.handleSubmit} />
-
+        <GifSearch handleSubmit={this.handleSubmit} />
       </div>
     )
   }
