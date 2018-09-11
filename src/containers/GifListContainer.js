@@ -12,20 +12,20 @@ export default class GifListContainer extends Component {
     }
   }
 
-  componentDidMount() {
-    fetch('http://api.giphy.com/v1/gifs/search?q=YOUR%20QUERY%20HERE&api_key=dc6zaTOxFJmzC&rating=g')
-      .then(response => response.json() )
-      .then(data => {
-        let subData = data.data
-        let firstThree = subData.slice(0,3).map(gifData => {
-          return gifData.images.original.url
-        })
+  // componentDidMount() {
+  //   fetch('http://api.giphy.com/v1/gifs/search?q=YOUR%20QUERY%20HERE&api_key=dc6zaTOxFJmzC&rating=g')
+  //     .then(response => response.json() )
+  //     .then(data => {
+  //       let subData = data.data
+  //       let firstThree = subData.slice(0,3).map(gifData => {
+  //         return gifData.images.original.url
+  //       })
 
-        this.setState({
-          gifs: firstThree,
-        })
-      });
-  }
+  //       this.setState({
+  //         gifs: firstThree,
+  //       })
+  //     });
+  // }
 
   fetchGifs = (query) => {
     const url = `http://api.giphy.com/v1/gifs/search?q=${query}&api_key=dc6zaTOxFJmzC&rating=g`;
