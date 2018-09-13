@@ -8,13 +8,13 @@ class GifSearch extends React.Component {
           this.setState({
               query: e.target.value
           })
-        console.log(this.state.query);
+          console.log('handle change', this.state.query);
         
       }
 
       handleSubmit(e){
         e.preventDefault()
-        this.props.gifSearch(this.state.query)
+        return this.props.gifSearch(this.state.query)
         
       }
 
