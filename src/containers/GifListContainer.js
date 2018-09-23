@@ -9,7 +9,7 @@ import React, { Component } from 'react';
 import GifList from '../components/GifList'
 import GifSearch from '../components/GifSearch'
 
-class GifListContainer extends Component {
+export default class GifListContainer extends Component {
 
   constructor(){
     super();
@@ -27,17 +27,17 @@ class GifListContainer extends Component {
     )
   }
 
-  fetchGifs = ( query = "kittens") => {
-    fetch(` http://api.giphy.com/v1/gifs/search?q=YOUR QUERY HERE&api_key=dc6zaTOxFJmzC&rating=g&limit=3`)
+  fetchGifs = (query) => {
+    try{
+    fetch(`http://api.giphy.com/v1/gifs/search?q=${query}&api_key=dc6zaTOxFJmzC&rating=g`)
       .then(res => res.json())
-      .then(({data}) => {
-        this.setState({ gifs: data.map ( gif => ({ url: gif.images.original.url }) ) })
+      .then(data => {
+        this.setState({
+          gifs: data.data.slice(0, 3)
+        })
       })
-  }
-
-  componentDidMount() {
-    this.fetchGifs()
+    } catch(e){
+      console.error(e)
+    }
   }
 }
-
-export default GifListContainer
