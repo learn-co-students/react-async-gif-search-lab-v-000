@@ -14,10 +14,9 @@ export default class GifListContainer extends Component {
   
   render() {
     return (
-      <div>
+      <div class='clearfix'>
         <GifSearch handleSubmit={this.handleSubmit.bind(this)} />
         <GifList gifs={this.state.gifs} />
-        {/* <br /> Gifs: {this.state.gifs.toString()} */}
       </div>
     )
   }
