@@ -11,10 +11,15 @@ class GifSearch extends Component {
 		})
 	}
 
+	newSubmit = (event) => {
+		event.preventDefault()
+		this.props.handleSubmit(this.state.query)
+	}
+
 	render() {
 		return(
 			<div>
-				<form onSubmit={this.props.handleSubmit(this.state.query)}>
+				<form onSubmit={this.newSubmit}>
 					<input type='text' value={this.state.query} onChange={this.handleChange.bind(this)} />
 					<br/>
 					<input type="submit" value="Submit" />
