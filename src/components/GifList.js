@@ -4,8 +4,8 @@ export default class GifList extends Component {
   render() {
     return (
       <ul>
-        I'm a list!
-      </ul>
+        {this.props.gifs.map(gif => <li><img src={gif} /></li>)}
+        </ul>
     )
   }
 }

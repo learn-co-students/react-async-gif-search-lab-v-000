@@ -3,34 +3,36 @@ import GifList from '../components/GifList'
 import GifSearch from '../components/GifSearch'
 
 export default class GifListContainer extends Component {
-  
-  state = {
-    gifs: [],
-    query: null
+  constructor() {
+    super()
+
+    this.state = {
+      gifs: []
+    }
   }
+  
   
   render() {
     return (
       <div>
-        <GifSearch handleSubmit={this.handleSubmit} />
-        I'm what you're looking for: {this.state.query}
-        <GifList />
+        <GifSearch handleSubmit={this.handleSubmit.bind(this)} />
+        <GifList gifs={this.state.gifs} />
+        {/* <br /> Gifs: {this.state.gifs.toString()} */}
       </div>
     )
   }
 
   handleSubmit = (event, formData) => {
     event.preventDefault()
-    this.setState({
-      query: formData.query
-    })
-    fetch(`http://api.giphy.com/v1/gifs/search?q=${formData.query}&api_key=dc6zaTOxFJmzC&rating=g`)
+
+    this.fetchGIFs(`http://api.giphy.com/v1/gifs/search?q=${formData.query}&api_key=dc6zaTOxFJmzC&rating=g`)
+  }
+
+  fetchGIFs = (url) => {
+    fetch(url)
       .then(response => response.json())
       .then(gifs => {
-        this.setState({
-          
-        })
+        this.setState({gifs: gifs.data.slice(0, 3).map(gif => gif.images.original.url)})
       })
-    
   }
 }
