@@ -18,13 +18,14 @@ class GifListContainer extends Component {
     return(
       <div className='GifListContainer'>
         <GifList />
-        <GifSearch />
+        <GifSearch searchMethod={ this.fetchGifUrls }/>
       </div>
       )
   }
 
 
   fetchGifUrls = (searchTerm) => {
+    debugger
     let thisContainer = this
     fetch(`http://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=dc6zaTOxFJmzC&rating=g&limit=3`)
       .then(function(response) {
