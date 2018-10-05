@@ -23,6 +23,14 @@ class GifListContainer extends Component {
       )
   }
 
+  componentWillMount(){
+    this.fetchGifUrls('dogs')
+  }
+
+  shouldComponentUpdate(nextProps, nextState){
+    debugger
+  }
+
   fetchGifUrls = (searchTerm) => {
     let thisContainer = this
     fetch(`http://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=dc6zaTOxFJmzC&rating=g&limit=3`)
@@ -31,7 +39,7 @@ class GifListContainer extends Component {
       })
       .then(function(myJson) {
         const gifUrls = myJson.data.map(obj => obj.url)
-        thisContainer.setState({ gifUrls: gifUrls })
+        thisContainer.setState({ gifUrls })
       });
   }
 
