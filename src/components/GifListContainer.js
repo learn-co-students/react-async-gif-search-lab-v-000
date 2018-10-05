@@ -23,13 +23,6 @@ class GifListContainer extends Component {
       )
   }
 
-  componentWillMount(){
-    this.fetchGifUrls('dogs')
-  }
-
-  shouldComponentUpdate(nextProps, nextState){
-    debugger
-  }
 
   fetchGifUrls = (searchTerm) => {
     let thisContainer = this
