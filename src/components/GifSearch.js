@@ -2,18 +2,28 @@ import React, { Component } from 'react';
 
 class GifSearch extends Component {
 
+  constructor() {
+    super();
+
+    this.state = {
+      term: ''
+    };
+  }
+
   render(){
     return (
-      <div className='gifSearch'>
-           <form onSubmit={ (event) => this.props.searchMethod(event) }>
-            <div class="form-group">
-              <label for="serach">Search</label>
-              <input type="text" class="form-control" id="search"></input>
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
+           <form onSubmit={ (event) => { event.preventDefault()
+               this.props.searchMethod(event.target.elements[0].value)} }>
+            <input type="text" onChange={ (event) => this.updateState(event) } value={ this.state.term } />
+            <button type="submit">Search</button>
           </form>
-      </div>
     )
+  }
+
+  updateState = (event) => {
+    this.setState({
+      term: event.target.value
+    })
   }
 
 }

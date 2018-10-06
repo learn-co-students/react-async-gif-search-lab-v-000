@@ -17,23 +17,22 @@ class GifListContainer extends Component {
   render(){
     return(
       <div className='GifListContainer'>
-        <GifList />
         <GifSearch searchMethod={ this.fetchGifUrls }/>
+        <GifList gifUrls={ this.state.gifUrls }/>
       </div>
       )
   }
 
 
   fetchGifUrls = (searchTerm) => {
-    debugger
     let thisContainer = this
     fetch(`http://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=dc6zaTOxFJmzC&rating=g&limit=3`)
       .then(function(response) {
         return response.json();
       })
       .then(function(myJson) {
-        const gifUrls = myJson.data.map(obj => obj.url)
-        thisContainer.setState({ gifUrls })
+        const gifs = myJson.data.map(obj => obj.images.original.url)
+        thisContainer.setState({ gifUrls: gifs })
       });
   }
 
