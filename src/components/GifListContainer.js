@@ -23,8 +23,14 @@ class GifListContainer extends Component {
       )
   }
 
+  clearGifUrls = () => {
+    this.setState({
+      gifUrls: []
+    })
+  }
 
   fetchGifUrls = (searchTerm) => {
+    this.clearGifUrls()
     let thisContainer = this
     fetch(`http://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=dc6zaTOxFJmzC&rating=g&limit=3`)
       .then(function(response) {
