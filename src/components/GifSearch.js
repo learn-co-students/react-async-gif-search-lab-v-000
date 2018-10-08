@@ -7,10 +7,15 @@ export default class GifSearch extends Component {
     searchTerm: ""
   }
 
+  getSubmit = event => {
+    event.preventDefault()
+    this.props.getGIFS(this.state.searchTerm)
+  }
+
 render() {
   return(
-    <form>
-      <input type="text" value={this.state.searchTerm} />
+    <form onSubmit={this.getSubmit}>
+      <input type="text" value={this.state.searchTerm} onChange = {event => this.setState({searchTerm: event.target.value})} />
     </form>
     )
 }
