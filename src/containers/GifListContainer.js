@@ -16,7 +16,7 @@ export default class GifListContainer extends React.Component {
   }
 
   searchGifs = (query = "") => {
-    fetch(`http://api.giphy.com/v1/gifs/search?q=` + `${query}` + `&api_key=dc6zaTOxFJmzC&rating=g`)
+    fetch(`http://api.giphy.com/v1/gifs/search?q=${query}&api_key=dc6zaTOxFJmzC&rating=g`)
     .then(resp => resp.json())
     .then(json => this.setState({gifs: this.parseImages(json)}))
   }
@@ -29,8 +29,7 @@ export default class GifListContainer extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const q = event.target[0].value;
-    this.searchGifs(q)
+    this.searchGifs(event.target[0].value)
   }
 
   render() {
