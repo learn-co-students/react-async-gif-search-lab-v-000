@@ -9,40 +9,27 @@ export default class GifListContainer extends React.Component {
         super();
         this.state = {
           gifs: [],
-          search: 'trending'
         };
     }
-    state = { gifs: [] };
 
     componentDidMount() {
-        this.doSearch();
+        this.doSearch('trending');
     }
 
-    doSearch() {
-        fetch(`http://api.giphy.com/v1/gifs/search?q=${this.state.search}&limit=3&&api_key=dc6zaTOxFJmzC&rating=g`)
+    doSearch = (searchField) => {
+        fetch(`http://api.giphy.com/v1/gifs/search?q=${searchField}&limit=3&api_key=dc6zaTOxFJmzC&rating=g`)
             .then(response => response.json())
-            .then(jsonData => {
-       
-                this.setState({
-                gifs: jsonData.data
-                })
+            .then(({data}) => {
+                this.setState({ gifs: data.map( gif => ({ url: gif.images.original.url }) ) })
             })
             .catch((error) => console.error("Fetch Failed",error));
 
     }
 
-    handleSubmit = (params) => {
-        this.setState({
-            search: params.search
-        },() => {
-            this.doSearch();
-        });
-    }
-
     render() {
         return (
             <div>
-                <GifSearch onSubmit={this.handleSubmit} />
+                <GifSearch onSubmit={this.doSearch} />
                 <GifList gifs={this.state.gifs} />
             </div>
         )

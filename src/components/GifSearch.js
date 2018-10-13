@@ -17,8 +17,8 @@ export default class GifSearch extends React.Component {
     
     handleSubmit = (event) => {
         event.preventDefault();
-        console.log("Submit",this.state);
-        (this.props.onSubmit)(this.state)
+        console.log("handeSubmit", this.state.search);
+        (this.props.onSubmit)(this.state.search)
     }
 
     render() {
