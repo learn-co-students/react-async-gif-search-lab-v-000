@@ -10,7 +10,7 @@ export default class GifListContainer extends Component {
     fetch(`http://api.giphy.com/v1/gifs/search?q={bunny}&api_key=dc6zaTOxFJmzC&rating=g`).then((response) => {
       return response.json();
     }).then((jsonResponse) => {
-      const gifs = jsonResponse.data.map((gifData) => {
+      const gifs = jsonResponse.data.slice(0, 3).map((gifData) => {
         return gifData.images.original.url
       });
       this.setState({gifs: gifs});
