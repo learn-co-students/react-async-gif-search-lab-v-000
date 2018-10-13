@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
 import GifList from '../components/GifList';
+import GifSearch from '../components/GifSearch';
 
 export default class GifListContainer extends Component {
-  state = {
-    gifs: []
+  constructor() {
+    super();
+    this.state = {
+      gifs: []
+    };
   }
 
   componentDidMount() {
-    fetch(`http://api.giphy.com/v1/gifs/search?q={bunny}&api_key=dc6zaTOxFJmzC&rating=g`).then((response) => {
+    this.searchGif('bunny');
+  }
+
+  searchGif(searchValue) {
+    fetch(`http://api.giphy.com/v1/gifs/search?q=${searchValue}&api_key=dc6zaTOxFJmzC&rating=g`).then((response) => {
       return response.json();
     }).then((jsonResponse) => {
       const gifs = jsonResponse.data.slice(0, 3).map((gifData) => {
@@ -17,9 +25,17 @@ export default class GifListContainer extends Component {
     })
   }
 
+  handleSubmit = (event) => {
+    event.preventDefault();
+    this.searchGif(event.target[0].value);
+  }
+
   render() {
     return (
-      <GifList gifs={this.state.gifs} />
+      <div>
+        <GifSearch handleSubmit={this.handleSubmit}/>
+        <GifList gifs={this.state.gifs} />
+      </div>
     )
   }
 }
