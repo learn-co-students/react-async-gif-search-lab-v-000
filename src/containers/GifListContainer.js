@@ -13,7 +13,6 @@ export default class GifListContainer extends React.Component {
         };
     }
     state = { gifs: [] };
-  //  http://api.giphy.com/v1/gifs/search?q=YOUR QUERY HERE&api_key=dc6zaTOxFJmzC&rating=g
 
     componentDidMount() {
         this.doSearch();
@@ -23,20 +22,19 @@ export default class GifListContainer extends React.Component {
         fetch(`http://api.giphy.com/v1/gifs/search?q=${this.state.search}&limit=3&&api_key=dc6zaTOxFJmzC&rating=g`)
             .then(response => response.json())
             .then(jsonData => {
-                console.log("do search",jsonData.data);
+       
                 this.setState({
                 gifs: jsonData.data
                 })
             })
             .catch((error) => console.error("Fetch Failed",error));
+
     }
 
     handleSubmit = (params) => {
-        console.log("ListContainer Submit",params);
         this.setState({
             search: params.search
         },() => {
-            console.log("New Search field",this.state);
             this.doSearch();
         });
     }
