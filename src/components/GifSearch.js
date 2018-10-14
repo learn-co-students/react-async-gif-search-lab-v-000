@@ -3,23 +3,29 @@ import React, {Component} from 'react'
 export default class GifSearch extends Component{
     constructor(){
         super()
-        this.state ={
+        this.state = {
             search: ''
         }
+
+        this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
-    handleChange = event =>{
+    handleChange(event) {
         this.setState({
             search: event.target.value
         })
     }
-    handleSubmit = event =>{
+
+    handleSubmit(event) {
         event.preventDefault()
-        this.state;
+        this.props.fetchImages(this.state.search);
     }
+
     render(){
         return(
-            <form onSubmit={event => this.handleSubmit(event)} >
-            <input type="text" id="search" onChange = {event =>this.handleChange(event)} value={this.state.search} />
+            <form onSubmit={this.handleSubmit} >
+                <input type="text" id="search" onChange = {event =>this.handleChange(event)} value={this.state.search} />
+                <input type="submit"/>
             </form>
         )
     }
