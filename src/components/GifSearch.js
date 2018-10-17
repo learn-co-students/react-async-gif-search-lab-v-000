@@ -12,16 +12,21 @@ class GifSearch extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={ event => this.handleSubmit(event) }>
-          <div>
-            <label>
-              Search Gifs: 
-                <input type="text" value={this.state.value} onChange={ event => this.setState({value: event.target.value})}/>
-              </label>
-            </div>
-        </form>
-      </div>
+      <section  className = 'Search-Form'
+        style = {{ backgroundColor: 'black',
+                    color: 'gray'
+                }}>
+        <div>
+          <form onSubmit={ event => this.handleSubmit(event) }>
+            <div>
+              <label>
+                Enter a Search Term:
+                  <input type="text" value={this.state.value} onChange={ event => this.setState({value: event.target.value})}/>
+                </label>
+              </div>
+          </form>
+        </div>
+      </section>
     )
   }
 }
