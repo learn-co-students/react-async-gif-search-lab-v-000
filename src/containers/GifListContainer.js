@@ -24,9 +24,13 @@ class GifListContainer extends React.Component {
 
   render(){
     return(
-      <div>
-        <GifList gifs={this.state.gifs} />
-        <GifSearch submit={this.handleSubmit}/>
+      <div className="row">
+        <div className="col-xs-6">
+          <GifList gifs={this.state.gifs} />
+        </div>
+        <div className="col-xs-6">
+          <GifSearch submit={this.handleSubmit}/>
+        </div>
       </div>
     )
   }
