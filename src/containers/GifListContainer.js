@@ -17,14 +17,14 @@ class GifListContainer extends React.Component {
   handleSubmit = (search) => {
     fetch(`http://api.giphy.com/v1/gifs/search?q=${search}&api_key=dc6zaTOxFJmzC&rating=g`)
       .then(response => response.json())
-      .then(data => {
-        this.setState({
-          gifs: data.data
-        })
+      // same as data.data
+      .then(({ data }) => {
+        const gifurls = data.map((gif) => ({ url: gif.images.original.url }))
+        this.setState({ gifs: gifurls})
       })
   }
   render() {
-    console.log(this.state)
+    console.log("GifListContainer state",this.state)
     return (
       <div>
         <GifSearch handleSubmit={this.handleSubmit} />

@@ -4,15 +4,16 @@ import React from 'react'
 // the input data. It can render a top level <ul> with each gif as an <li>.
 
 class GifList extends React.Component {
-  render() {
-    console.log("giflist", this.props.gifs)
+
+render() {
+
+  const show = this.props.gifs.map((gif,index)=>{
+    return(
+      <li><img key={gif.index} src={gif.url} /> </li>
+    )
+  })
     return (
-      <div>
-        <p>Gifs:</p>
-        <ul>
-          {this.props.gifs.map(gif => {<li><img key={gif.url} src={gif.url} alt="gif" /> </li>})}
-        </ul>
-      </div>
+      <div>{show}</div>
     );
   }
 }
