@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import GifListContainer from './containers/GifListContainer'
 
 class GifList extends Component {
 
   constructor(props) {
     super(props)
-    this.state ={
-
-    }
   }
 
   render() {
-
+    return (
+      <ul>
+        {this.props.gifs.map(gif => {return <li><img key={gif.images.original.url} src={gif.images.original.url}/></li>})}
+      </ul>
+    )
   }
 
 
