@@ -1,5 +1,8 @@
 import React from 'react'
 
-function GiftList(){
-  
+const GiftList = props => {
+
+{this.props}
+
 }
+export default GiftList
