@@ -1,5 +1,7 @@
 import React from 'react';
 import GifList from '../components/GifList';
+import GifSearch from '../components/GifSearch';
+import { Container, Row, Col } from 'reactstrap';
 
 export default class GifListContainer extends React.Component {
 
@@ -7,22 +9,27 @@ export default class GifListContainer extends React.Component {
     gifs: []
   }
 
-  render() {
-    return null
-  }
-
-  fetchData() {
-    fetch("http://api.giphy.com/v1/gifs/search?q=YOUR QUERY HERE&api_key=dc6zaTOxFJmzC&rating=g")
+  fetchData = (query) => {
+    fetch(`http://api.giphy.com/v1/gifs/search?q=${query}&api_key=dc6zaTOxFJmzC&rating=g`)
       .then(res => res.json())
-      .then(json => {debugger
+      .then(json => {
         this.setState({
-        gifs: json.data.slice(0, 3)
-      })})
+          gifs: json.data.map(gif => gif.images.original.url)
+        })
+      })
   }
 
   componentDidMount() {
-    this.fetchData()
+    this.fetchData();
   }
 
+  render() {
+    return (
+      <div>
+        <GifSearch search={this.fetchData} />
+        <GifList gifs={this.state.gifs} />
+      </div>
+    )
+  }
 
 }
