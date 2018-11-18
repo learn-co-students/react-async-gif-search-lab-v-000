@@ -1,16 +1,22 @@
 import React, { Component } from 'react'
 
 
-const GifSearch = () => {
+const GifSearch = ({setNewGifs}) => {
 
     return (
-      <form>
+
+      <form onSubmit={(e) => {
+      	e.preventDefault()
+      	console.log(e)
+      	const searchTerm = e.target.querySelector('#userInput').value
+      	setNewGifs(searchTerm)
+      }}>
+
         <input type="text" id="userInput" />
-        <input type="submit" value="Find Gifs"></input>
+        <input type="submit" ></input>
       </form>
     )
 }
-
 
 
 export default GifSearch
