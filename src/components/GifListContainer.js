@@ -10,16 +10,14 @@ class GifListContainer extends Component {
 		gifs: []
 	}
 
-	setNewGifs = (newGifs) => {
-		this.setState({
-			gifs: newGifs
-		})
+	setNewGifs = (searchTerm) => {
 
-		fetch("http://api.giphy.com/v1/gifs/search?q=YOUR QUERY HERE&api_key=dc6zaTOxFJmzC&rating=g")
-		.then(response => response.json())
-		.then(results => {
-			this.setNewGifs(results.data.gifs.slice(0,3))
-		})
+		fetch("http://api.giphy.com/v1/gifs/search?q={searchTerm}&api_key=dc6zaTOxFJmzC&rating=g")
+			.then(response => response.json())
+			.then(r => {
+				this.setState({gifs: r.data.slice(0,3)})
+			}
+		)
 	}
 
 	render(){
