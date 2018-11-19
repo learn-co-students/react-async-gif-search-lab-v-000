@@ -9,7 +9,7 @@ const GifList = ({gifs}) => {
 			{gifs.map(gif => {
 				return (
 				  <li>
-				    <img src='{gif.images.downsized_small.url} 'alt='this is not a gif'/>
+				    <img src={gif.images.downsized_large.url} alt={gif.embed_url}/>
 				  </li>
 				)
 			})}

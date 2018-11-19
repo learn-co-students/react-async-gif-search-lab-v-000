@@ -18,6 +18,7 @@ class GifListContainer extends Component {
 				this.setState({gifs: r.data.slice(0,3)})
 			}
 		)
+			console.log(this.state.gifs)
 	}
 
 	render(){
