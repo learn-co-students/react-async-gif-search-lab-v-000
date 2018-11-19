@@ -7,8 +7,8 @@ const GifSearch = ({setNewGifs}) => {
 
       <form onSubmit={(e) => {
       	e.preventDefault()
-      	console.log(e)
       	const searchTerm = e.target.querySelector('#userInput').value
+      	console.log(searchTerm)
       	setNewGifs(searchTerm)
       }}>
 

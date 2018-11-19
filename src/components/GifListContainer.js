@@ -12,13 +12,12 @@ class GifListContainer extends Component {
 
 	setNewGifs = (searchTerm) => {
 
-		fetch("http://api.giphy.com/v1/gifs/search?q={searchTerm}&api_key=dc6zaTOxFJmzC&rating=g")
+		fetch(`http://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=dc6zaTOxFJmzC&rating=g`)
 			.then(response => response.json())
 			.then(r => {
 				this.setState({gifs: r.data.slice(0,3)})
 			}
 		)
-			console.log(this.state.gifs)
 	}
 
 	render(){
