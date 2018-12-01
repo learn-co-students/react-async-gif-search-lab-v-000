@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 
 function NavBar(props){
   const colors = {
     black: 'navbar-inverse',
     white: 'navbar-default'
-  }
+  };
   
   return (
     <nav className={`navbar ${colors[props.color]}`}>
@@ -16,7 +16,7 @@ function NavBar(props){
         </div>
       </div>
     </nav>
-  )
+  );
 }
 
-export default NavBar
+export default NavBar;
