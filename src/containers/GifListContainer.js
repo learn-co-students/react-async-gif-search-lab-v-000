@@ -3,16 +3,16 @@ import React, {Component} from 'react'
 import GifList from '../components/GifList'
 import GifSearch from '../components/GifSearch'
 
+let initialState = {
+  gifs: []
+}
+
 class GifListContainer extends Component{
 
-  state = {
-    gifs: []
-  }
+  state = initialState
 
   handleSearch = (str) => {
-    this.setState({
-      gifs: []
-    })
+    this.setState(initialState)
     let url = "http://api.giphy.com/v1/gifs/search?q="+str+"&api_key=dc6zaTOxFJmzC&rating=g"
     fetch(url)
       .then(res=>res.json())
