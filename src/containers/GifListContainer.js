@@ -14,7 +14,7 @@ class GifListContainer extends Component {
       </div>
     )
   }
-   fetchGIFs = (query = "dolphins") => {
+   fetchGIFs = (query = "puppies") => {
     fetch(`https://api.giphy.com/v1/gifs/search?q=${query}&api_key=dc6zaTOxFJmzC&rating=g&limit=3`)
       .then(res => res.json())
       .then(({data}) => {
