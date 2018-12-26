@@ -1,23 +1,16 @@
-import React, { Component } from React 
+import React, { Component } from 'react'
 
 export default class GifList extends Component {
-    constructor(){
-        super(){
-            this.state({
-                query: "",
-                gifs: []
-            })
-        }
-    }
-    
-
+  
  
 
     render(){
         
         return(
         <ul>
-            {this.props.gifs.map(gif => `<li> gif.url </li>`)}
+            {this.props.gifs.map(gif => (
+                <li key={gif.id}> <img src={gif.images.downsized.url} alt="alt"/> </li>
+            ))}
 
         </ul>
 
