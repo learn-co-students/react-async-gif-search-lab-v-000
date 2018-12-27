@@ -6,16 +6,17 @@ export default class GifListContainer extends React.Component {
     constructor() {
         super()
         this.state = {
-            giflist: []
+            gifList: []
         }
     }
     gifFetch = (searchTerm) => {
-        fetch("http://api.giphy.com/v1/gifs/search?q=YOUR QUERY HERE&api_key=dc6zaTOxFJmzC&rating=g&limit=3")
+        fetch(`http://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=dc6zaTOxFJmzC&rating=g&limit=3`)
         .then(res => res.json())
-        .then(data => {
+        .then(({data}) => {
             this.setState({
                 gifList: data.map((gif)=> {
-                    {url: gif.images.original.url}
+                   return {url: gif.images.original.url}
+                    
                 })
             })
         })
@@ -31,5 +32,9 @@ export default class GifListContainer extends React.Component {
             <GifSearch gifFetch={this.gifFetch}/>
         </div>
      )
+    }
+
+    componentDidMount() {
+        this.gifFetch()
     }
 }
