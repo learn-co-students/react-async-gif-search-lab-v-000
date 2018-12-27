@@ -3,9 +3,9 @@ export default class GifList extends React.Component {
 
     
     generateLis= () => {
-        this.props.gifList.map((gif)=>(<li> <img src={gif.url} alt="gif" /> </li>)
-        ).join("")
-        debugger
+       return this.props.gifList.map((gif)=>(<li> <img src={gif.url} alt="gif" /> </li>)
+        )
+        
     }
 
 

@@ -34,7 +34,4 @@ export default class GifListContainer extends React.Component {
      )
     }
 
-    componentDidMount() {
-        this.gifFetch()
-    }
 }
