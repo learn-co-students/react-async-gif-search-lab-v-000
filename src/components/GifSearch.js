@@ -1,37 +1,36 @@
 import React, { Component } from 'react';
 
 class GifSearch extends Component {
-  // setting initial state - state object has a "keywords" key pointing to an empty string since the <input> text field to enter search terms is initially blank
+  // setting initial state - state object has :keywords key set = to empty string since form field <input> is initially blank
   state = {
-  	keywords: ''
+    keywords: ''
   }
-
+  // event object below comes from onSubmit event handler in opening <form> tag
   handleFormSubmission = event => {
-    event.preventDefault()
+    event.preventDefault() // prevent the default form submit action
     this.props.fetchGifs(this.state.keywords)
   }
-
+  // event object below comes from onChange event handler in <input> text field. event.target = <input> text field which triggered the event (it changes as the user types into it)
   handleChange = event => {
     this.setState({
-      keywords: event.target.value
+      keywords: event.target.value // event.target.value = the value of the <input>'s value property = string search terms entered
     })
   }
-
+  // updating state - the :keywords key in state object points to whatever the user enters in the <input> text field
   render() {
-  	return (
-  	  <form onSubmit={this.handleFormSubmission}>
+    return (
+      <form onSubmit={this.handleFormSubmission}>
         <label>Enter a Search Term</label>:
         <br />
-        <input type="text" value={this.state.keywords} onChange={this.handleChange} />
+        <input type="text" name="keywords" value={this.state.keywords} onChange={this.handleChange} />
         <br />
-        <input type="submit" value="Find Gifs"/>
-  	  </form>
-  	)
+        <input type="submit" value="Find Gifs" />
+      </form>
+    )
   }
 }
 
 export default GifSearch;
-
 /*
 // GifSearch component will render a form that receives the user input for the giphy search. 
 // The text input should be a controlled component 
