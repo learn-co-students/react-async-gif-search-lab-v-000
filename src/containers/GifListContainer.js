@@ -18,7 +18,7 @@ class GifListContainer extends Component {
         }&api_key=dc6zaTOxFJmzC&rating=g&limit=3`
       )
         .then(res => res.json())
-        .then(({ data }) => this.setState({ gifs: data.map(gif=>({url: gif.images.original.url}))},() => console.log("this.state.gifs=", this.state.gifs)))
+        .then(({ data }) => this.setState({ gifs: data.map(gif=>({url: gif.images.original.url}))}))
         .catch(err => console.log("Error"));
   }
 
