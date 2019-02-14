@@ -12,7 +12,7 @@ export default class GifListContainer extends React.Component {
 
   fetchData = (searchKeyword) => {
     let url = `http://api.giphy.com/v1/gifs/search?q=${searchKeyword}&api_key=dc6zaTOxFJmzC&rating=g&limit=3`
-    let urls = []
+    
     fetch(url)
       .then(response => response.json())
         .then(data => {
