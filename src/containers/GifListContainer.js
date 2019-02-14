@@ -11,12 +11,13 @@ export default class GifListContainer extends React.Component {
   }
 
   fetchData = (searchKeyword) => {
-    let url = `http://api.giphy.com/v1/gifs/search?q=${searchKeyword}&api_key=dc6zaTOxFJmzC&rating=g`
+    let url = `http://api.giphy.com/v1/gifs/search?q=${searchKeyword}&api_key=dc6zaTOxFJmzC&rating=g&limit=3`
     let urls = []
     fetch(url)
       .then(response => response.json())
         .then(data => {
-          this.setState({gifList: [data.data[0].images.original.url, data.data[1].images.original.url, data.data[2].images.original.url]})
+          let urls = data.data.map(data => data.images.original.url )
+          this.setState({gifList: urls})
         })
   }
 
