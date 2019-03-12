@@ -10,7 +10,9 @@ class GifList extends React.Component {
 
   genGifyList = () => {
     console.log('this is working')
-    return this.props.gifs.map((item, key) =>(<li key={key}>{item.images.original.url}</li>))
+    return this.props.gifs.map((item, key) =>(<li key={key}>
+      <img key={item.images.original.url} src={item.images.original.url} alt="gif"/>
+      </li>))
   }
 
   render() {
