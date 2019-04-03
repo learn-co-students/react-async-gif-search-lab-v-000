@@ -14,11 +14,11 @@ export default class GiftListContainer extends Component {
     findGIFs = (query) => {
         fetch(`http://api.giphy.com/v1/gifs/search?q=${query}&api_key=dc6zaTOxFJmzC&rating=g&limit=3`)
         .then(response => response.json())
-        .then(({data}) => {this.setState({
+        .then(({data}) => this.setState({
             results: data.map(result => ({
                 url: result.images.original.url
             }))
-        })})
+        }))
     }
 
     render() {
