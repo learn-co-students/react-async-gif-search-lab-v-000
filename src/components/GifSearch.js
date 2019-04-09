@@ -6,9 +6,9 @@ export default class GifSearch extends React.Component {
     queryString: ""
   };
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault()
-    this.props.fetchGifs(this.state.queryString)
+    this.props.searchGifs(this.state.queryString)
   }
 
   handleChange = event => {
@@ -21,7 +21,7 @@ export default class GifSearch extends React.Component {
     return (
       <div>
       <p>Hello from GifSearch</p>
-        <form onSubmit={event => this.handleSubmit(event)}>
+        <form onSubmit={this.handleSubmit}>
           <input
             type="text"
             name="Search Query"

@@ -8,8 +8,8 @@ export default class GifListContainer extends React.Component {
     gifs: []
   };
 
-  fetchGifs(query="hello") {
-    let path = `http://api.giphy.com/v1/gifs/search?q={query}&api_key=dc6zaTOxFJmzC&rating=g`
+  fetchGifs = (query="hello") => {
+    let path = `http://api.giphy.com/v1/gifs/search?q=${query}&api_key=dc6zaTOxFJmzC&rating=g`
     fetch(path)
       .then(response => response.json())
       .then((gifs) => {
@@ -25,7 +25,7 @@ export default class GifListContainer extends React.Component {
     return (
       <div>
         <p>Hello from GifListContainer</p>
-        < GifSearch fetchGifs={this.fetchGifs}/>
+        < GifSearch searchGifs={this.fetchGifs}/>
         < GifList list={this.state.gifs}/>
       </div>
     )
