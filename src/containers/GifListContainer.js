@@ -1,5 +1,6 @@
 import React from 'react'
 import GifSearch from '../components/GifSearch'
+import GifList from '../components/GifList'
 
 class GifListContainer extends React.Component {
   state = {
@@ -7,17 +8,21 @@ class GifListContainer extends React.Component {
     searchQuery: ''
    };
 
+  // sendToGifList = () => {
+  //   debugger
+  //   return(
+  //     <GifList threeGIFs={this.state.threeGIFs} />
+  //   )
+  // }
+
   handleSubmit = (value) => {
-    let url;
     this.setState({
       searchQuery: value
     },
-      () => {
-        url = `http://api.giphy.com/v1/gifs/search?q=${this.state.searchQuery}&api_key=dc6zaTOxFJmzC&rating=g`
-        fetch(url)
-        .then(response => response.json())
-        .then(data => console.log(data))
-      }
+    () =>
+      fetch(`http://api.giphy.com/v1/gifs/search?q=${this.state.searchQuery}&api_key=dc6zaTOxFJmzC&rating=g`)
+      .then(response => response.json())
+      .then(data => this.setState({threeGIFs: [data["data"][0].images.original.url, data["data"][1].images.original.url, data["data"][2].images.original.url]}))
     )
   }
 
@@ -25,10 +30,13 @@ class GifListContainer extends React.Component {
     return(
       <div>
         <GifSearch handleSubmit={this.handleSubmit}/>
+        <GifList threeGIFs={this.state.threeGIFs} />
       </div>
     )
   }
 
 }
+
+
 
 export default GifListContainer

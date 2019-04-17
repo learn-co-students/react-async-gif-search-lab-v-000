@@ -6,7 +6,8 @@ class GifSearch extends Component {
     textInput: ''
   }
 
-  clickSubmit = () => {
+  clickSubmit = (event) => {
+    event.preventDefault()
     this.props.handleSubmit(this.state.textInput)
   }
 
@@ -19,7 +20,7 @@ class GifSearch extends Component {
   render() {
     return (
       <span>
-        <form onSubmit={() => this.props.handleSubmit(this.state.textInput)}>
+        <form onSubmit={this.clickSubmit}>
           <label>Enter a Search Term:</label>
           <input type="text" name="textInput" value={this.state.textInput} onChange={this.handleChange}/>
           <input type="submit" value="Find Gifs" />
