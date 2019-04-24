@@ -49,6 +49,7 @@
     "babel-preset-stage-1": "^6.24.1",
     "babelify": "^7.3.0",
     "bootstrap": "^3.3.7",
+    "http-proxy-middleware": "^0.19.1",
     "jsdom": "^9.9.1",
     "mocha": "^5.2.0",
     "react-scripts": "^1.0.7",
