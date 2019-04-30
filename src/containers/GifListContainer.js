@@ -9,7 +9,7 @@ state = {
   }
 
   fetchGifs(query = "dolphin"){
-    fetch(`http://api.giphy.com/v1/gifs/search?q=${query}api_key=dc6zaTOxFJmzC&rating=g`, {mode: 'cors'})
+    fetch(`https://api.giphy.com/v1/gifs/search?q=${query}api_key=dc6zaTOxFJmzC&rating=g`)
      .then(response => response.json())
      .then(({data}) => {this.setState({
          searchedPicture: data.map(gif =>({url: gif.images.orginal.url }) 
