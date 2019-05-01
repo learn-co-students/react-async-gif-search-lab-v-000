@@ -3,7 +3,7 @@ import React from 'react';
 class GifSearch extends React.Component {
 
   state ={
-    query: ""
+    query: " "
   }
   render(){
     return (
