@@ -1,24 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react'
 
-class GifSearch extends React.Component {
+class GifSearch extends Component {
 
-  state ={
+  state = {
     query: ""
   }
-  render(){
+
+  handleSubmit = event => {
+    event.preventDefault()
+    this.props.fetchGIFs(this.state.query)
+  }
+
+  render() {
     return (
       <div>
-       <form onSubmit={this.handleSubmit}>
-         <input type="text" value={this.state.query} onChange={event => this.setState({query: event.target.value})} />
-       </form>
-     </div>
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" value={this.state.query} onChange={event => this.setState({query: event.target.value})} />
+        </form>
+      </div>
     )
   }
 
-  handleSubmit =event=>{
-    event.prevetDefault();
-    this.props.handleSubmit(this.state.query);
-  }
 }
 
-export default GifSearch;
+export default GifSearch
