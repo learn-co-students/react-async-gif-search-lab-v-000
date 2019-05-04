@@ -1,15 +1,21 @@
 import React from 'react';
 
 
-    const GifList = props => {
+    class GifList extends React.Component {
+      render() {
+        const gifPics = this.props.gifs.map(gif => (
+          <img key={gif.url} src={gif.url} alt="gif"/>
+      ))
       return (
         <ul>
-            {props.gifs.map(gif => (
-              <li><img key={gif.url} src={gif.url} alt="gif"/> </li>
-            ))}
+                <li>
+                  {gifPics}
+                </li>
         </ul>
-      );
+      )
     }
+  }
+
 
 
 

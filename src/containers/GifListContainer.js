@@ -9,8 +9,9 @@ class GifListContainer extends Component{
     gifs: []
   };
 
-  fetchGifs = (searchGifs = "dogs") =>{
-     fetch(`https://api.giphy.com/v1/gifs/search?q=${searchGifs}&api_key=dc6zaTOxFJmzC&rating=g&limit=3`)
+  fetchGifs = (searchGifs) =>{
+    let url = `https://api.giphy.com/v1/gifs/search?q=${searchGifs}&api_key=p39ia85nrFnJyANx4Yyrpp31HGkz2cT0&rating=g&limit=3`
+     fetch(url)
         .then(response => response.json())
         .then(({data}) => {
              this.setState({ gifs: data.map( gif => ({ url: gif.images.original.url }) ) });

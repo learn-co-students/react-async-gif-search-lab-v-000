@@ -3,19 +3,21 @@ import React, { Component } from 'react'
 
 class GifSearch extends Component {
 
+
   state = {
     searchGifs: ""
   }
 
-  handleSubmit = event => {
-    event.preventDefault()
-    this.props.fetchGifs(this.state.value)
-  }
 
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
+  }
+
+  handleSubmit = event => {
+    event.preventDefault()
+    this.props.fetchGifs(this.state.searchGifs)
   }
 
   render() {
