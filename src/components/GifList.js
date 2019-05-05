@@ -19,10 +19,11 @@ import React from 'react';
 
   const GifList = props =>{
     console.log("what are the props?",props)
+
     return (
       <div>
       {props.gifs.map((gif, index)=>
-          <img key={index} src={gif.url} alt="gif"/>)}
+         <img key={index} src={gif.url} alt="gif"/>)}
       </div>
     )
   }
