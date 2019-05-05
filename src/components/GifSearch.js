@@ -16,6 +16,12 @@ class GifSearch extends React.Component {
     this.props.fetchGifs(this.state.query)
   }
 
+  handleOnChange = (event) => {
+    this.setState({
+      query: event.target.value
+    })
+  }
+
   render() {
     return (
       <div>
@@ -26,7 +32,7 @@ class GifSearch extends React.Component {
             type="text"
             name="searchQuery"
             value={this.state.query}
-            onChange={event => this.setState({query: event.target.value})} />
+            onChange={this.handleOnChange} />
         </form>
       </div>
     )
