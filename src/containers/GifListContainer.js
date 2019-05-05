@@ -9,7 +9,7 @@ class GifListContainer extends Component{
     gifs: []
   };
 
-  fetchGifs = (searchGifs) =>{
+  fetchGifs = (searchGifs = "") =>{
     let url = `https://api.giphy.com/v1/gifs/search?q=${searchGifs}&api_key=p39ia85nrFnJyANx4Yyrpp31HGkz2cT0&rating=g&limit=3`
      fetch(url)
         .then(response => response.json())

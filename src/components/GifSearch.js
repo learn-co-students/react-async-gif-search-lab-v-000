@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 
 class GifSearch extends Component {
@@ -25,7 +25,7 @@ class GifSearch extends Component {
     return (
       <div>
       <form onSubmit= {this.handleSubmit}>
-        <input type="text" name="searchGifs" value={this.state.searchGifs} onChange={this.handleChange}/>
+        <input type="text"  name="searchGifs" value={this.state.searchGifs} onChange={this.handleChange}/>
         <br/>
         <input type="submit" value="Find Gifs"/>
         </form>
