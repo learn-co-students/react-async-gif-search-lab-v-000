@@ -2,7 +2,6 @@ import React from 'react';
 
 
 const GitList = (props) => {
-  console.log(props.data)
 
   return(
     <div>
