@@ -19,13 +19,13 @@ class GifListContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchGifs();
+    this.fetchGifs("llama");
   }
 
   render() {
     return (
       <div>
-      <GifSearch submitSearch={this.fetchGifs}/>
+      <GifSearch fetchGifs={this.fetchGifs}/>
       <GifList gifs={this.state.gifs} />
 
       </div>
