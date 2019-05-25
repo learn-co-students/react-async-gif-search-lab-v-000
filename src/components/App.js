@@ -7,7 +7,7 @@ import GifListContainer from '../containers/GifListContainer'
 function App() {
   return (
     <div>
-        <NavBar />
+        < NavBar color='black' title="Giphy Search" />
         <GifListContainer />
     </div>
   )
