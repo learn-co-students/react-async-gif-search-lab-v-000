@@ -11,24 +11,24 @@ class GifListContainer extends Component {
   render() {
     return(
       <div>
-        <GifSearch fetchGIFs={this.fetchGIFs} /><br />
+        <GifSearch fetchGifs={this.fetchGifs} /><br />
         <GifList gifs={this.state.gifs} />
       </div>
     )
   }
 
-  fetchGIFs = (query = 'hearts') => {
+  fetchGifs = (query = 'hearts') => {
     fetch(`https://api.giphy.com/v1/gifs/search?q=${query}&api_key=dc6zaTOxFJmzC&rating=g&limit=3`)
       .then(res => res.json())
       .then(({data}) => {
-        this.setState({ gifs: data.map( gif => ({ url: gif.images.original.url }) ) })
+        this.setState({ gifs: data.map(gif => ({ url: gif.images.original.url })) })
       }).catch(function(error) {
       			alert('Not Found! ' + error)
       		})
   }
 
   componentDidMount() {
-    this.fetchGIFs()
+    this.fetchGifs()
   }
 }
 
