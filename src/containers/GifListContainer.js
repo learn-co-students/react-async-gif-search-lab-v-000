@@ -11,7 +11,7 @@ class GifListContainer extends Component {
   render() {
     return(
       <div>
-        <GifSearch fetchGIFs={this.fetchGIFs} />
+        <GifSearch fetchGIFs={this.fetchGIFs} /><br />
         <GifList gifs={this.state.gifs} />
       </div>
     )
