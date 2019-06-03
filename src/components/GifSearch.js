@@ -15,7 +15,6 @@ class GifSearch extends Component {
   }
 
   handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.searchText)
     event.preventDefault()
 		this.props.loadPics(this.state.searchText)
   }
