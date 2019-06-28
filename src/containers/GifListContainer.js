@@ -5,23 +5,23 @@ import GifSearch from '../components/GifSearch.js'
 class GifListContainer extends React.Component {
   constructor(props) {
     super(props)
+
     this.state = {
       gifs: [],
       query: ''
     }
   }
 
-  handleSubmit (event) {
-    event.preventDefault()
+  handleSubmit (state) {
     this.setState({
-      query: event.target.name.value
+      query: state
     })
   }
 
   render () {
     return (
       <div>
-        <GifSearch query={this.state.query} onSubmitQuery={this.handleSubmit}/>
+        <GifSearch onQuerySubmit={this.handleSubmit} />
         <GifList gifs={this.state.gifs} />
       </div>
     )

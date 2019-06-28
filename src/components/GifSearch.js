@@ -4,20 +4,31 @@ class GifSearch extends React.Component{
   constructor(props) {
     super(props)
 
+    this.state = {
+      query: ''
+    }
+
+    this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleSubmit (event) {
-    this.props.onSubmitQuery(event.target.name.value)
+  handleChange (event) {
+    this.setState({
+      query: event.target.value
+    })
+  }
+
+  handleSubmit(event) {
+    event.preventDefault()
+    this.props.onQuerySubmit(this.state.query)
   }
 
   render () {
-    const query = this.props.query
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
         Query
-        <input type="text" name="name" />
+        <input type="text" name="name" onChange={this.handleChange}/>
         </label>
         <input type="submit" value="Submit" />
       </form>
