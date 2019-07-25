@@ -2,12 +2,21 @@ import React, {Component} from 'react'
 
 
 class GifList extends Component {
-  state = {search: ""}
+  state = {search: " "}
+
+  handleSearch = (event) => {
+    this.setState({search: event.target.value})
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+    this.props.handleFetch(this.state.search)
+  }
 
   render() {
     return(
-      <form onSubmit={this.props.handleSubmit}>
-        <input type="text" value="search" onChange={this.handleSearch}/>
+      <form onSubmit={this.handleSubmit}>
+        <input type="text" value={this.state.search} onChange={this.handleSearch}/>
         <input type="submit" value="Submit"/>
       </form>
     )
