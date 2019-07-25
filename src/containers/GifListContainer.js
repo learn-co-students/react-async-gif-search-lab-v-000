@@ -16,12 +16,16 @@ class GifListContainer extends Component {
     )
   }
 
-  componentDidMount() {
-    fetchGifs('http://api.giphy.com/v1/gifs/search?q=YOUR%20QUERY%20HERE&api_key=dc6zaTOxFJmzC&rating=g')
+  fetchGifs = (value = 'cats') => {
+    fetch(`http://api.giphy.com/v1/gifs/search?q=${value}&api_key=dc6zaTOxFJmzC&rating=g&limit=3`)
       .then(res => res.json())
-      .then({data} => {
-        this.setState({gifs: data.map(gif => ({url: gif.original.url}) )} )
+      .then(({data}) => {
+        this.setState({gifs: data.map(gif => ({url: gif.images.original.url}) )} )
       })
+  }
+
+  componentDidMount() {
+    this.fetchGifs();
   }
 }
 
