@@ -3,21 +3,24 @@ import React, { Component } from 'react';
 class GifSearch extends Component {
 
   state = {
-    value: ''
+    query: ''
   }
 
-  handleChange = event => {
-    this.setState({
-      value: event.target.value,
-    });
+  handleSubmit = e => {
+    e.preventDefault()
+    this.props.fetchGifs(this.state.query)
+  }
+
+  handleChange = e => {
+    this.setState({query: e.target.value})
   }
 
   render() {
     return (
-      <form onSubmit={event => this.handleSubmit(event)}>
+      <form onSubmit={this.handleSubmit}>
         <input
         type="text"
-        value={this.state.value}
+        value={this.state.query}
         onChange={this.handleChange}
         />
         <input type="submit" value="Find Gifs" />
