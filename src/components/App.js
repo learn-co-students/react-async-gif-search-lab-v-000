@@ -4,11 +4,9 @@ import NavBar from './NavBar'
 
 import GifListContainer from '../containers/GifListContainer'
 
-import GifList from './GifList'
+// import GifList from './GifList'
 
-import GifSearch from './GifList'
-
-// the App component should render out the GifListContainer component 
+// import GifSearch from './GifList'
 
 const App = () => {
   return (
@@ -21,10 +19,10 @@ const App = () => {
         <GifListContainer />
       </div>
       <div>
-        <GifList />
+        {/* <GifList /> */}
       </div>
       <div>
-        <GifSearch />
+        {/* <GifSearch /> */}
       </div>
     </div>
   )

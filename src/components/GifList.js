@@ -6,6 +6,12 @@ const GifList = () => {
 	)
 }
 
+//How does the DOM know to include GifList if it's not imported into App? something implicit in React or ReactDOM?
+//Then why isn't the text in GifSearch being rendered? And why wasn't when it had the exact same functional component setup as GifList had?
+//Now why isn't it showing 'hello' with GifSearch totally commented out in App????
+//Why the two index.htmls?
+
+
 export default GifList
 
 
