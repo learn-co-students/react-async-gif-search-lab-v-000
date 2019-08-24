@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
 
+import GifList from '../components/GifList'
+
+import GifSearch from '../components/GifSearch'
+
 export default class GifListContainer extends Component {
 
 	constructor(){
@@ -9,17 +13,23 @@ export default class GifListContainer extends Component {
 		}
 	}
 
-	// fetchGifs = () => {
-	// 	fetch('http://api.giphy.com/v1/gifs/search?q=YOUR QUERY HERE&api_key=dc6zaTOxFJmzC&rating=g')
-	// 	.then( res => res.json())
-	// 	.then( data => dataValues={})
-	// }
+	fetchGifs = () => {
+		fetch('http://api.giphy.com/v1/gifs/search?q=cats&api_key=dc6zaTOxFJmzC&rating=g')
+		.then( res => res.json())
+		.then( json => console.log(json))
+	}
+	//will set state in above function with search results
+
 	
 	render(){
 		return(
 			<div>
-				{/* <GifSearch />
-				<GifList /> */}
+				<div>
+					<GifList returnedGifs={ this.state.gifURLs }/>
+				</div>
+				<div>
+					<GifSearch fetchGifs={ this.fetchGifs }/>
+				</div>
 			</div>
 		)
 	}

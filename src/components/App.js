@@ -4,10 +4,6 @@ import NavBar from './NavBar'
 
 import GifListContainer from '../containers/GifListContainer'
 
-// import GifList from './GifList'
-
-// import GifSearch from './GifList'
-
 const App = () => {
   return (
     <div>
