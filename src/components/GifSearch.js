@@ -16,10 +16,8 @@ export default class GifSearch extends Component {
 
 	render(){
 		return (
-			<div>
-				<p>
-					Enter a Search Term:
-				</p>
+			<div className='col-sm-6'>
+				Enter a Search Term:
 				<form onSubmit={ this.handleSubmit } id='gif-form'>
 					<input 
 						type='text' 
@@ -33,6 +31,7 @@ export default class GifSearch extends Component {
 						}
 					/>
 				</form>
+				<br></br>
 				<button 
 					onSubmit={ this.handleSubmit } 
 					form="gif-form">
