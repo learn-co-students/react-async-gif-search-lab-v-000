@@ -14,12 +14,6 @@ const App = () => {
       <div>
         <GifListContainer />
       </div>
-      <div>
-        {/* <GifList /> */}
-      </div>
-      <div>
-        {/* <GifSearch /> */}
-      </div>
     </div>
   )
 }

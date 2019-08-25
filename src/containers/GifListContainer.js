@@ -13,19 +13,20 @@ export default class GifListContainer extends Component {
 		}
 	}
 
-	fetchGifs = () => {
-		fetch('http://api.giphy.com/v1/gifs/search?q=cats&api_key=dc6zaTOxFJmzC&rating=g')
+	fetchGifs = (gifSearchTerms) => {
+		fetch(`https://api.giphy.com/v1/gifs/search?q=${gifSearchTerms}&api_key=dc6zaTOxFJmzC&rating=g&limit=3`)
 		.then( res => res.json())
-		.then( json => console.log(json))
+		.then(({data}) => {
+			this.setState({
+				gifURLS: data.map( gif => ({ url: gif.images.original.url }) ) })
+		})
 	}
-	//will set state in above function with search results
 
-	
 	render(){
 		return(
 			<div>
 				<div>
-					<GifList returnedGifs={ this.state.gifURLs }/>
+					<GifList gifURLs={ this.state.gifURLs }/>
 				</div>
 				<div>
 					<GifSearch fetchGifs={ this.fetchGifs }/>
@@ -34,14 +35,11 @@ export default class GifListContainer extends Component {
 		)
 	}
 
+	componentDidMount() {
+    this.fetchGIFs()
+	}
 }
-
-
-
 
 // the <GifListContainer /> will be responsible for fetching the data from the giphy API, storing the first 3 gifs from the response in its component state, and passing that data down to its child, the <GifList> component, as a prop.
 
 // It will also render a <GifSearch /> component that renders the form. <GifListContainer /> should pass down a submit handler function to <GifSearch /> as a prop.
-
-
-//do i absolutely NEED to use componentDidMount? What are its advantages? Just optimization?
