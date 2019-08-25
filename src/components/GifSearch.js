@@ -20,7 +20,7 @@ export default class GifSearch extends Component {
 				<p>
 					Enter a Search Term:
 				</p>
-				<form onSubmit={ this.handleSubmit }>
+				<form onSubmit={ this.handleSubmit } id='gif-form'>
 					<input 
 						type='text' 
 						value={ this.state.gifSearchTerms }
@@ -33,6 +33,11 @@ export default class GifSearch extends Component {
 						}
 					/>
 				</form>
+				<button 
+					onSubmit={ this.handleSubmit } 
+					form="gif-form">
+					Find Gifs
+				</button>
 			</div>
 		)
 	}
