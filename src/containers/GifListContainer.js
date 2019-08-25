@@ -9,7 +9,7 @@ export default class GifListContainer extends Component {
 	constructor(){
 		super()
 		this.state = {
-			gifURLS: []
+			gifURLs: []
 		}
 	}
 
@@ -18,7 +18,7 @@ export default class GifListContainer extends Component {
 		.then( res => res.json())
 		.then(({data}) => {
 			this.setState({
-				gifURLS: data.map( gif => ({ url: gif.images.original.url }) ) })
+				gifURLs: data.map( gif => ({ url: gif.images.original.url }) ) })
 		})
 	}
 
@@ -36,10 +36,6 @@ export default class GifListContainer extends Component {
 	}
 
 	componentDidMount() {
-    this.fetchGIFs()
+    this.fetchGifs()
 	}
 }
-
-// the <GifListContainer /> will be responsible for fetching the data from the giphy API, storing the first 3 gifs from the response in its component state, and passing that data down to its child, the <GifList> component, as a prop.
-
-// It will also render a <GifSearch /> component that renders the form. <GifListContainer /> should pass down a submit handler function to <GifSearch /> as a prop.
