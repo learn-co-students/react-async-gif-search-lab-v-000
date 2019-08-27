@@ -13,7 +13,7 @@ export default class GifListContainer extends Component {
 		}
 	}
 
-	fetchGifs = (gifSearchTerms) => {
+	fetchGifs = (gifSearchTerms = 'cats') => {
 		fetch(`https://api.giphy.com/v1/gifs/search?q=${gifSearchTerms}&api_key=dc6zaTOxFJmzC&rating=g&limit=3`)
 		.then( res => res.json())
 		.then(({data}) => {
