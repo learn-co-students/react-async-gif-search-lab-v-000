@@ -36,6 +36,6 @@ export default class GifListContainer extends Component {
 	}
 
 	componentDidMount() {
-    this.fetchGifs()
+    	this.fetchGifs()
 	}
 }
