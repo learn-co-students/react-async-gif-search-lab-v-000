@@ -1,19 +1,21 @@
 import React from 'react'
-
+import './GifList.css';
 
 
 
 const GifList = (props) => {
-  let three = props.gifs.map((gif) => {
-    return (`<li>${gif}</li>`)
-  })
+
+
+
 
   return (
-    <div>
+    <div id="left">
       <ul>
-        {three}
+        <li><img src={props.gifs[0]} alt= "" height="200" width="200" /></li><br />
+        <li><img src={props.gifs[1]} alt= "" height="200" width="200" /></li><br />
+        <li><img src={props.gifs[2]} alt= "" height="200" width="200" /></li>
       </ul>
-      </div>
+    </div>
   )
 }
 

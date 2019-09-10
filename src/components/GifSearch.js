@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-
+import './GifSearch.css';
 // import  from './'
 
 export default class GifSearch extends Component {
 
   state = {
-    gifs: [],
     query: ""
   }
 
@@ -15,10 +14,15 @@ export default class GifSearch extends Component {
       })
     }
 
+    handleSubmit = event => {
+      event.preventDefault()
+      this.props.retrieveGifs(this.state.query)
+    }
+
   render() {
     return (
-      <div className="" onSubmit={() => {this.props.retrieveGifs(this.state.query)}}>
-          <form >
+      <div className="" id="right" >
+          <form onSubmit={this.handleSubmit} >
           <p>Enter a Search Term:</p>
           <div>
             <label>
