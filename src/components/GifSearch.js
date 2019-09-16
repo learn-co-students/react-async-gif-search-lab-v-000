@@ -14,7 +14,7 @@ class GifSearch extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.onSubmit(event);
+    this.props.onSubmit(this.state.query);
   }
 
   render() {

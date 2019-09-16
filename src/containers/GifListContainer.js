@@ -9,10 +9,9 @@ class GifListContainer extends Component {
     images: []
   }
 
-  onSubmit(event) {
+  getImages = (search) => {
     let images = [];
-    
-    fetch('http://api.giphy.com/v1/gifs/search?q=puppies&api_key=dc6zaTOxFJmzC&rating=g')
+    fetch(`http://api.giphy.com/v1/gifs/search?q=${search}&api_key=dc6zaTOxFJmzC&rating=g`)
     .then(res => res.json())
     .then(data => { 
       const imagesArray = data.data;
@@ -23,18 +22,14 @@ class GifListContainer extends Component {
     });
   }
 
+  onSubmit = (query) => {
+    console.log("Event: " + query);
+    this.getImages(query);
+  }
+
 
   componentDidMount() {
-    let images = [];
-    fetch('http://api.giphy.com/v1/gifs/search?q=dolphin&api_key=dc6zaTOxFJmzC&rating=g')
-    .then(res => res.json())
-    .then(data => { 
-      const imagesArray = data.data;
-      [0,1,2].forEach(i => {
-        images[i] = imagesArray[i].images.original.url;
-      });
-      this.setState({ images: images });
-    });
+    this.getImages('kittens');
   }
 
   render() {
