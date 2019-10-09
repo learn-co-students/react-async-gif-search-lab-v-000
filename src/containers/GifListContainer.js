@@ -10,22 +10,28 @@ class GifListContainer extends React.Component {
   }
 
   handleSubmit = () => {
-    console.log("The submit button has been clicked!")
+    console.log("The submit button has been clicked!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
   }
+
+  // handleResponce = (response) => {
+  //   response.data.map(gif => gif.url)
+  // }
 
 
 
   componentDidMount() {
     // debugger
-    // fetch('http://api.giphy.com/v1/gifs/search?q=YOUR QUERY HERE&api_key=dc6zaTOxFJmzC&rating=g')
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     //console.log(data)
-    //     this.setState({
-    //       threeGifs: data
-    //     })
-    //   }
-    // )
+    fetch('http://api.giphy.com/v1/gifs/search?q=YOUR QUERY HERE&api_key=dc6zaTOxFJmzC&rating=g')
+      .then(response => response.json())
+      .then(resData => {
+        //console.log(res.data[0].url)
+        resData.data.map(gif => gif.url)
+        //console.log(gifs)
+        this.setState({
+          threeGifs: gifs
+        })
+      }
+    )
   }
 
   render() {

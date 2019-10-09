@@ -1,11 +1,20 @@
 import React from 'react';
 
 class GifList extends React.Component {
+  handleConsole = () => {
+    console.log("inside the render() GifList")
+
+  }
+
+  seeConsoleLog = () => {
+    console.log(this.props.threeGifs)
+  }
+
+
   render() {
     return (
       <div>
-        // <h1>{this.props.formData.firstName}</h1>
-        <h1>hi</h1>
+        <ul>{this.seeConsoleLog()}</ul>
       </div>
     )
   }
