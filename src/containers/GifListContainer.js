@@ -6,12 +6,12 @@ import GifSearch from '../components/GifSearch'
 class GifListContainer extends React.Component {
 
   state = {
-    threeGifs: []
+    gifs: []
   }
 
-  handleSubmit = () => {
-    console.log("The submit button has been clicked!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-  }
+  // handleSubmit = () => {
+  //   console.log("The submit button has been clicked!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+  // }
 
   // handleResponce = (response) => {
   //   response.data.map(gif => gif.url)
@@ -19,26 +19,25 @@ class GifListContainer extends React.Component {
 
 
 
-  componentDidMount() {
+  handleSubmit = (term) =>  {
     // debugger
-    fetch('http://api.giphy.com/v1/gifs/search?q=YOUR QUERY HERE&api_key=dc6zaTOxFJmzC&rating=g')
+
+    // fetch('http://api.giphy.com/v1/gifs/search?q=YOUR QUERY HERE&api_key=dc6zaTOxFJmzC&rating=g')
+    fetch(`http://api.giphy.com/v1/gifs/search?q=${term}s&api_key=dc6zaTOxFJmzC&rating=g`)
       .then(response => response.json())
-      .then(resData => {
-        //console.log(res.data[0].url)
-        resData.data.map(gif => gif.url)
-        //console.log(gifs)
-        this.setState({
-          threeGifs: gifs
-        })
-      }
-    )
+        .then( ({data}) => {
+        // this.setState({ gifs: data.map( gif => ({ url: console.log(gif.images.original.url) }) ) })
+        this.setState({ gifs: data.map( gif => ({ url: gif.images.original.url }) ) })
+
+      })
+
   }
 
   render() {
     return (
       <div>
-        <GifList threeGifs={this.state.threeGifs} />
-        <GifSearch handleSubmit={this.handleSubmit()} />
+      <GifSearch handleSubmit={this.handleSubmit} />
+        <GifList gifs={this.state.gifs} />
       </div>
     )
   }

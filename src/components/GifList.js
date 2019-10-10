@@ -6,15 +6,19 @@ class GifList extends React.Component {
 
   }
 
-  seeConsoleLog = () => {
-    console.log(this.props.threeGifs)
+  gifGenerator = (gifs) => {
+    // console.log(gifs)
+    return gifs.map( gif =>
+      <ul>
+        <li><img src={gif.url} alt={gif.title} ></img>  </li>
+      </ul>)
   }
 
 
   render() {
     return (
       <div>
-        <ul>{this.seeConsoleLog()}</ul>
+        <ul>{this.gifGenerator(this.props.gifs)}</ul>
       </div>
     )
   }
