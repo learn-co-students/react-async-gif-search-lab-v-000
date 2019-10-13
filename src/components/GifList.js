@@ -8,7 +8,7 @@ class GifList extends Component {
     return (
       <React.Fragment>
       <ul>
-      <li>this.props.</li>
+      <li></li>
       </ul>
       </React.Fragment>
     )
