@@ -1,16 +1,17 @@
-class GifListContainer extends React.Component {
-  state = { data: [] };
-  componentDidMount() {
-    fetch('http://api.giphy.com/v1/gifs/search?q=YOUR QUERY HERE&api_key=dc6zaTOxFJmzC&rating=g')
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-          data: data
-        })
-      })
-  }
+import React, { Component } from "react";
 
+
+
+class GifList extends Component {
+  
   render() {
-    return <Gifsearch comments={this.state.data} />;
+    return (
+      <React.Fragment>
+      <ul>
+      <li>this.props.</li>
+      </ul>
+      </React.Fragment>
+    )
   }
 }
+export default GifList;
