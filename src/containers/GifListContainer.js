@@ -12,18 +12,20 @@ class GifListContainer extends Component {
     render(){
       return (
         <div>
-          <GifSearch fetchGIFs={this.fetchGIFs} />
-          <GifList gifs={this.state.gifs} />
+        <GifSearch fetchGIFs={this.fetchGIFs}/>
+        <GifList gifs={this.state.gifs} />
         </div>
           )
     }
 
     fetchGIFs = (query = "dogs") => {
-      fetch('http://api.giphy.com/v1/gifs/search?q={query}&api_key=dc6zaTOxFJmzC&rating=g&limit=3')
+      fetch('https://api.giphy.com/v1/gifs/search?q={query}&api_key=dc6zaTOxFJmzC&rating=g&limit=3')
         .then(response => response.json())
         .then(data => {
+          console.log(data)
+          console.log(data.data)
           this.setState({
-            gifs: data.images.original.url
+            gifs: data.data.map(object => object.images.original.url)
           })
         })
     }
