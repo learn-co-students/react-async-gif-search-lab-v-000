@@ -10,8 +10,18 @@ class GifListContainer extends React.Component {
   }
  }
 
+ handleSubmit = value => {
+   fetch(`http://api.giphy.com/v1/gifs/search?q=${value}&api_key=dc6zaTOxFJmzC&rating=&limit=3`)
+      .then(response => response.json())
+      .then(({data}) => {
+        this.setState({
+          gif: data.map(g => ({url: g.images.original.url}))
+        })
+      })
+  }
+
   componentDidMount() {
-    fetch('http://api.giphy.com/v1/gifs/search?q=YOUR QUERY HERE&api_key=dc6zaTOxFJmzC&rating=g&limit=3')
+    fetch('http://api.giphy.com/v1/gifs/search?q=YOUR QUERY HERE&api_key=dc6zaTOxFJmzC&rating=g')
       .then(response => response.json())
       .then(({data}) => {
         this.setState({
@@ -25,7 +35,7 @@ class GifListContainer extends React.Component {
     <React.Fragment>
       <GifList data={this.state.gif}/>
       
-      <GifSearch submitHandler={this.handleSubmit} />
+      <GifSearch submitHandler={this.handleSubmit}/>
     </React.Fragment>
     )
   }
