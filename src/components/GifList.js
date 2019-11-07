@@ -1,14 +1,13 @@
 import React from 'react'
 
 const  GifList = props =>  {
-    const gifProps = props.gifUrls
-    console.log(gifProps)
+
   return (
       <div>
-       
+        {props.gifUrls.map( gif => <li key={Math.random()}><img src={gif.url} alt=''/></li>)}
       </div>
-    )
-  }
+  )
+}
 
 
 export default GifList
