@@ -14,7 +14,7 @@ export default class GifListContainer extends Component {
 		}
 	}
 
-	componentDidMount() {
+	fetchData() {
 		fetch(`${SEARCH_API_ENDPOINT}?q=${this.state.keyword}&api_key=${REACT_APP_GIPHY_API_KEY}&rating=g&limit=3`)
 		.then(res => res.json())
 		.then(gifs => {
@@ -24,9 +24,13 @@ export default class GifListContainer extends Component {
 		})	
 	}
 
+	componentDidMount() {
+		this.fetchData()
+	}
+
 	handleFormSubmit = (e) => {
 		e.preventDefault()
-		this.componentDidMount()
+		this.fetchData()
 		this.setState({keyword: ''})
 	}
 
