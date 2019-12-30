@@ -1,0 +1,10 @@
+.search-form {
+	float: right;
+	position: static;
+	padding-right: 400px;
+}
+
+.gif-list {
+	float: left;
+	position: static;
+}
