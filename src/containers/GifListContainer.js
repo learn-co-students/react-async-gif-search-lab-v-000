@@ -10,12 +10,11 @@ export default class GifListContainer extends Component {
 		super()
 		this.state = {
 			gifs: [],
-			keyword: ''
 		}
 	}
 
-	fetchData() {
-		fetch(`${SEARCH_API_ENDPOINT}?q=${this.state.keyword}&api_key=${REACT_APP_GIPHY_API_KEY}&rating=g&limit=3`)
+	fetchData = (query = 'dolphins') => {
+		fetch(`${SEARCH_API_ENDPOINT}?q=${query}&api_key=${REACT_APP_GIPHY_API_KEY}&rating=g&limit=3`)
 		.then(res => res.json())
 		.then(gifs => {
 			this.setState({
@@ -24,23 +23,15 @@ export default class GifListContainer extends Component {
 		})	
 	}
 
-	handleFormSubmit = (e) => {
-		e.preventDefault()
+	componentDidMount() {
 		this.fetchData()
-		this.setState({keyword: ''})
-	}
-
-	handleFormQuery = (e) => {
-		this.setState({
-			[e.target.name]: e.target.value
-		})
 	}
 
 	render() {
 		return (
 			<div>
 				<GifList gifs={this.state.gifs}/>
-				<GifSearch keyword={this.state.keyword} handleFormSubmit={this.handleFormSubmit} handleFormQuery={this.handleFormQuery} />
+				<GifSearch fetchData={this.fetchData} />
 			</div>
 		)
 	}
