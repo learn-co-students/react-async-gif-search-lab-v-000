@@ -24,10 +24,6 @@ export default class GifListContainer extends Component {
 		})	
 	}
 
-	componentDidMount() {
-		this.fetchData()
-	}
-
 	handleFormSubmit = (e) => {
 		e.preventDefault()
 		this.fetchData()
