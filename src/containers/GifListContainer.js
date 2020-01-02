@@ -13,16 +13,18 @@ export default class GifListContainer extends React.Component {
     }
 
     handleSearch(values) {
-       this.setState({images: values})
+        let first3 = [];
+        for (let i = 0; i < 3; i++) {
+            first3.push(values[i])
+        }
+       this.setState({images: first3})
     }
 
-    componentDidMount(){
-        if (this.state.searchURL !== undefined) {
-            fetch(`${this.state.searchURL}`)
+    componentDidUpdate() {
+        fetch(`${this.state.searchURL}`)
             .then(response => response.json())
             .then(json => this.handleSearch(json.data))
-        }
-    }
+      }
 
     returnSubmitValue = (event) => {
         event.persist();
@@ -38,8 +40,6 @@ export default class GifListContainer extends React.Component {
 
     
     render(){
-        console.log(this.state.images)
-        console.log(this.state.searchURL)
             return(
                 <div>
                     <div><GifSearch returnSubmitValue={this.returnSubmitValue}/></div>

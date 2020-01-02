@@ -14,7 +14,7 @@ export default class GifList extends React.Component {
         return(
             <div>
                 <ul>
-                    {this.imgURLS().map(image => <img src={image} alt={image}/>)}
+                    {this.imgURLS().map(image => <img src={image} alt={image.id}/>)}
                 </ul>
             </div>
         )
