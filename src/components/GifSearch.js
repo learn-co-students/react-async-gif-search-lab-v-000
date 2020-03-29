@@ -16,7 +16,9 @@ class GifSearch extends Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <input type="text" value={this.state.query} onChange={event => this.setState({query: event.target.value})} />
+          <button>Submit</button>
         </form>
+        <br></br>
       </div>
     )
   }
