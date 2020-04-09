@@ -3,13 +3,13 @@ import React, { Component } from 'react'
 
 class GifList extends Component{
 render(){
-    console.log(this.props.gifs)
+  const images = this.props.gifs.map(image => <li> <img key={image} src={image} alt="gif"/></li>)
+
   return (
   <div>
   <ul>
 
-  <li><img src={this.props.gifs}></img></li>
-   <li><img src={this.props.gifs}></img></li>
+  {images}
   </ul>
   </div>
 )

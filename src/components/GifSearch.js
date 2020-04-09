@@ -10,13 +10,18 @@ class GifSearch extends Component{
   handleChange = event => {
     event.persist()
     this.setState({
-  [event.target.id]: event.target.value
+      gifname: event.target.value
   })
+  }
+
+  handleSubmit = event => {
+    event.preventDefault()
+    this.props.fetchGifs(this.state.gifname)//callback prop
   }
 
 render(){
   return(
-  <form>
+  <form onSubmit={this.handleSubmit}>//callbackfunction
   <label>
   Gif Search
   <input type="text" id="gifname" value={this.state.gifname} onChange={this.handleChange} ></input>
