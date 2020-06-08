@@ -11,13 +11,13 @@ class GifListContainer extends Component {
   render() {
     return(
       <div>
-        <GifSearch fetchGifs={this.fetchGifs} />
+        <GifSearch fetchGIFs={this.fetchGIFs} />
         <GifList gifs={this.state.gifs} />
       </div>
     )
   }
 
-  fetchGifs = (query = "dolphins") => {
+  fetchGIFs = (query = "dolphins") => {
     fetch(`https://api.giphy.com/v1/gifs/search?q=${query}&api_key=dc6zaTOxFJmzC&rating=g&limit=3`)
       .then(res => res.json())
       .then(({data}) => {
@@ -26,7 +26,7 @@ class GifListContainer extends Component {
   }
 
   componentDidMount() {
-    this.fetchGifs()
+    this.fetchGIFs()
   }
 }
 
