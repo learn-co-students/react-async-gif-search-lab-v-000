@@ -1,30 +1,20 @@
 import React, { Component } from 'react';
 
 export default class GifSearch extends Component {
-  state = {
-    searchTerm: ""
-  }
-
-  handleChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
-  }
-
   render() {
     return (
       <div>
-        <form className="form-group">
+        <form className="form-group" onSubmit={event => this.props.handleSubmit(event)}>
           <label>Enter a Search Term:</label>
           <input
             type="text"
             id="searchTerm"
             name="searchTerm"
             className="form-control"
-            onChange={this.handleChange}
-            value={this.state.searchTerm}
+            onChange={event => this.props.handleChange(event)}
+            value={this.props.searchTerm}
           />
-          <button type="submit" className="btn btn-success" onClick={event => this.props.handleSubmit(event, this.state.searchTerm)}>Find Gifs</button>
+          <button type="submit" className="btn btn-success">Find Gifs</button>
         </form>
       </div>
     )
