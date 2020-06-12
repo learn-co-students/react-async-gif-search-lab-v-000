@@ -20,11 +20,19 @@ class GifListConatiner extends Component {
     	})
     }
 
+    gifListGenerator = () => {
+        return(
+            this.state.gifList.map(gif => {
+            return <GifList key={gif.id} gifItem={gif} /> 
+          })
+        )
+    }
+
     render() {
         return (
         	<div>
             <GifSearch searchGifs={this.fetchGifs} />
-            <gifList gifs={this.state.gifList} />
+            {this.gifListGenerator()}
           </div>
         );
     }
