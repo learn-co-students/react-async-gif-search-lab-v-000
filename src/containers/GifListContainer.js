@@ -15,6 +15,7 @@ class GifListContainer extends Component {
                 topThreeGifs: data.map(gif=>({url: gif.images.original.url}))
             })
         })
+        .catch(error => console.log(error))
     }
 
     render(){
