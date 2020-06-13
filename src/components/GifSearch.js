@@ -22,8 +22,8 @@ class GifSearch extends Component {
         return (
         	<form onSubmit={this.handleSubmit}>
                 <input type="text" value={this.state.search} onChange={this.handleChange} />
-                <input type="submit" />
-          </form>
+                <button type="submit" class="btn btn-primary">Find Gifs</button>
+            </form>
             
         );
     }
