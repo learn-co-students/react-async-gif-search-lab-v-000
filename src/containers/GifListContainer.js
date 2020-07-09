@@ -37,6 +37,9 @@ export default class GifListContainer extends Component {
   }
 
   handleSubmit = (event) => {
+    
+    //actually should have passed in state, not the event to be true controlled component
+    
     //store query to state here
     //access query in fetch from state
     event.preventDefault()
