@@ -19,6 +19,7 @@ export default class GifSearch extends Component {
 
   render() {
     return (
+      //should actually be passing in state, not event for it to be true controlled component
       <form onSubmit={(event) => this.props.handleSubmit(event)}>
       <input
         type="text"
