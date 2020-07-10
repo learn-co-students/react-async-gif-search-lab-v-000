@@ -35,6 +35,8 @@ export default class GifListContainer extends Component {
       })
 
   }
+  
+  //FOLLOW SOLUTION INSTEAD-WITH HANDLE SUBMIT IN GIFSEARCH SO HAVE ACCESS TO STATE SO CAN BE CONTROLLED COMPONENT
 
   handleSubmit = (event) => {
     
