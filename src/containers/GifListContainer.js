@@ -18,11 +18,13 @@ class GifListContainer extends Component {
     }
 
     render () {
-        return 
-        <React.fragment>
+        return (
+      <div>
             <GifList />
             <GifSearch onSubmit={this.handleSubmit}/>
-        </React.fragment>
+        </div>
+        );
+        
     }
 
 }

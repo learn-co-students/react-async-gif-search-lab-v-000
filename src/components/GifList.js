@@ -4,14 +4,14 @@ class GifList extends Component {
 
     render () {
         return (
-            <React.fragment>
+            <div>
                 <h2>Search Results</h2>
                 <ul>
                     <li></li>
                     <li></li>
                     <li></li>
                 </ul>
-            </React.fragment>
+            </div>
         );
     }
     
