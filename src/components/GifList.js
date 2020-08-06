@@ -7,9 +7,10 @@ class GifList extends Component {
             <div>
                 <h2>Search Results</h2>
                 <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                    {/* {console.log(this.props.results)} */}
+                    {this.props.results.map((result) => (
+                        <li><img src={result.images.original.url} alt="Search Results"/></li>
+                    ))}
                 </ul>
             </div>
         );
