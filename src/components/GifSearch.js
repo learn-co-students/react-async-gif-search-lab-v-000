@@ -1,7 +1,7 @@
-import React from 'react'
+import React, {Component} from 'react'
 
 
-class GifSearch extends React.Component {
+class GifSearch extends Component {
 
     constructor() {
         super();
@@ -21,7 +21,7 @@ class GifSearch extends React.Component {
             <div style={style}>
                 <form onSubmit={this.props.mySubmitHandler}>
                 <p>Enter a Search Term</p>
-                <input type="text" value={this.state.value} onChange={this.handleChange}></input>
+                <input type="text" value={this.state.value} onChange={this.handleChange}></input>{' '}<br></br>
                 <button type="submit">Find Gifs</button>
                 </form>
             </div>
