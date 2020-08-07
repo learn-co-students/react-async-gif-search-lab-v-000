@@ -8,26 +8,35 @@ class GifListContainer extends Component {
     constructor () {
         super ()
     this.state = {
-        topResults: []
+        topResults: [],
+        query: ''
     }
+    this.handleSubmit = this.handleSubmit.bind(this);
 }
 
 
-    handleSubmit(event) {
-        console.log(event)
-        fetch(`https://api.giphy.com/v1/gifs/search?q=${event.target.value}&api_key=K82mHF1IgNkjrTPXkJy4PDFI0n0xgsjL&rating=g`)
+    handleSubmit(query) {
+        let topThree = [];
+ 
+        return fetch(`https://api.giphy.com/v1/gifs/search?q=${query}&api_key=K82mHF1IgNkjrTPXkJy4PDFI0n0xgsjL&rating=g`)
         .then(response => response.json())
-        .then(data => {
-            // this.setState({ topResults: data.slice(0, 3) })
-            console.log(data)
+        .then(response => {
+            topThree = response.data.slice(0, 3)
+            this.setState({topResults: topThree})
+            // console.log(response.data[0].images.original.url)
         });
+
     }
 
     render () {
         return (
       <div>
+          <div>
             <GifList results={this.state.topResults}/>
-            <GifSearch onSubmit={this.handleSubmit}/>
+            </div>
+            <div>
+            <GifSearch handleSubmit={this.handleSubmit}/>
+            </div>
         </div>
         );
         
