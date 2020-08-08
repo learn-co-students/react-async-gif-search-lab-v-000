@@ -15,13 +15,13 @@ class GifSearch extends Component {
 
     render() {
         const style = {
-            float: "right"
+            float: "right"  
         }
         return (
             <div style={style}>
                 <form onSubmit={this.props.mySubmitHandler}>
                 <p>Enter a Search Term</p>
-                <input type="text" value={this.state.value} onChange={this.handleChange}></input>{' '}<br></br>
+                <input type="text" value={this.state.value} onChange={this.handleChange}></input><br></br>
                 <button type="submit">Find Gifs</button>
                 </form>
             </div>
