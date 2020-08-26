@@ -4,7 +4,7 @@ import GifListContainer from '../containers/GifListContainer'
 
 
 
-class GifSearch {
+class GifSearch extends React.Component {
 
   state = {
     searchTerm: ''
@@ -12,7 +12,10 @@ class GifSearch {
 
 
   handleChange = event => {
-    console.log(event)
+    console.log("event object value from handeChange:", event.target.value)
+    this.setState({
+      searchTerm: event.target.value
+    })
   }
 
 
@@ -20,9 +23,9 @@ class GifSearch {
   render(){
     return(
       <div> hi
-        <form>
-          <input type="text" value={this.state.value} onChange={ event => this.handleChange(event) } />
-          <input type="submit" onSubmit={this.onSubmit} />
+        <form onSubmit={ event => this.props.handleSubmit(event)} >
+          <input type="text" id="searchTerm" value={this.state.searchTerm} onChange={ event => this.handleChange(event) } />
+          <input type="submit" />
         </form>
       </div>
     )

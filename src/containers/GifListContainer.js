@@ -13,13 +13,14 @@ class GifListContainer extends React.Component {
     // gifs = []
   }
 
-  onSubmit = event => {
-    console.log("event target value", event.target.value)
-    // fetch(`https://api.giphy.com/v1/gifs/search?q=` + `${event.target.value}` + `&api_key=XV0KMGghwZpJg9ceQYCSg61l209OnFCi&rating=g`)
-    //   .then(res => res.json())
-    //   .then(data => {
-    //
-    //   })
+  handleSubmit = event => {
+    event.preventDefault()
+    console.log("event target value in GifListCon hS:", event.target)
+    fetch(`https://api.giphy.com/v1/gifs/search?q=` + `${event.target.value}` + `&api_key=XV0KMGghwZpJg9ceQYCSg61l209OnFCi&rating=g`)
+      .then(res => res.json())
+      .then(data => {
+
+      })
   }
 
 
@@ -27,7 +28,7 @@ class GifListContainer extends React.Component {
     return(
       <div>hi
         <GifList firstThreeGifs={this.state.gifs} />
-        <GifSearch onSubmit={this.onSubmit} />
+        <GifSearch handleSubmit={this.handleSubmit} />
       </div>
 
     )
