@@ -12,15 +12,27 @@ class GifListContainer extends React.Component {
     gifs: []
     // gifs = []
   }
+  //
 
-  handleSubmit = event => {
-    event.preventDefault()
-    console.log("event target value in GifListCon hS:", event.target)
-    fetch(`https://api.giphy.com/v1/gifs/search?q=` + `${event.target.value}` + `&api_key=XV0KMGghwZpJg9ceQYCSg61l209OnFCi&rating=g`)
+// i put it here because this is where the fetchGifs it's calling is located
+  componentDidMount(){
+  // remember to include parantheses
+    this.fetchGifs()
+  }
+
+
+  fetchGifs = (query="dolphins") => {
+    // console.log("event target value in GifListCon hS:", event.target)
+    return (fetch(`https://api.giphy.com/v1/gifs/search?q=` + `${query}` + `&api_key=XV0KMGghwZpJg9ceQYCSg61l209OnFCi&rating=g&limit=3`)
       .then(res => res.json())
       .then(data => {
-
-      })
+        console.log("data", data)
+        this.setState({
+          gifs: data.map(gif => ({
+            url: gif.images.original.url
+          }))
+        })
+      }))
   }
 
 
@@ -28,7 +40,7 @@ class GifListContainer extends React.Component {
     return(
       <div>hi
         <GifList firstThreeGifs={this.state.gifs} />
-        <GifSearch handleSubmit={this.handleSubmit} />
+        <GifSearch fetchGifs={this.fetchGifs} />
       </div>
 
     )

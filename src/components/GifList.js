@@ -1,16 +1,29 @@
 
-
 import React from 'react'
 
 
-class GifList extends React.Component {
+const GifList = props =>  {
 
-  render(){
+
+  const givenGifs = props.firstThreeGifs.map(gif => {
+            return <img key={gif.id} src={gif.images.original.url} />
+      })
+
+
+
+  // render(){
+    console.log("props", props)
+    // console.log("this.props firstThreeGifs", this.props.firstThreeGifs )
     return(
-      <div>hi</div>
+      <div>
+        <ul>
+          { givenGifs }
+        </ul>
+      </div>
     )
-  }
+  // }
 
 }
 
 export default GifList
+// you can put console logs right under the render, but i guess not in the return
