@@ -20,7 +20,7 @@ class GifListContainer extends Component {
     fetchGifs = (term = "") => {
         fetch(`https://api.giphy.com/v1/gifs/search?q=${term}&api_key=yR6YAfH56kldMBCKfV4pQ8KNBdP4PvJ9&rating=g&limit=10`)
             .then(resp => resp.json())
-            .then(data => this.setState({ gifs: data.data }))
+            .then(data => this.setState({ gifs: data.data}))
     }
 
     submitHandler = (searchTerm) => {
