@@ -10,17 +10,33 @@ class GifListContainer extends Component {
 
     componentDidMount() {
         this.fetchGifs()
+
     }
 
     // componentDidUpdate() {
 
     //     console.log("Good job your search worked!")
     // }
+// jMlVdRPEIO2j5bcV9y9oDncNdUomxIuz
 
-    fetchGifs = (term = "dolphins") => {
-        fetch(`https://api.giphy.com/v1/gifs/search?q=${term}&api_key=dc6zaTOxFJmzC&rating=g&limit=10`)
-            .then(resp => resp.json())
-            .then(data => this.setState({ gifs: data.data }))
+// FI key: dc6zaTOxFJmzC
+    //fetchGifs = (term = "dolphins") => {
+    //    fetch(`https://api.giphy.com/v1/gifs/search?q=${term}&api_key=jMlVdRPEIO2j5bcV9y9oDncNdUomxIuz&rating=g&limit=3`)
+    //        .then(resp => resp.json())
+
+    //        .then(data => this.setState({ gifs: data.data }))
+
+    //}
+
+    fetchGifs = (term) => {
+      fetch(`https://api.giphy.com/v1/gifs/search?q=${term}&api_key=jMlVdRPEIO2j5bcV9y9oDncNdUomxIuz&rating=g&limit=3`)
+      .then(response => response.json())
+      .then (data => {
+        this.setState ({
+          gifs: data.data
+        })
+        console.log(data.data)
+      })
     }
 
     submitHandler = (searchTerm) => {
