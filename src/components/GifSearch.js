@@ -17,6 +17,7 @@ class GifSearch extends Component {
         <form onSubmit={event => this.props.submitHandle(event, this.state.search)}>
             <label name="search">GIF Search</label>
             <input type="text" name="search" value={this.state.search} onChange={event => this.handleChange(event)}/>
+            <button type="Submit" value="Submit">Find GIFs!</button>
         </form>
     );
   }
