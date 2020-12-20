@@ -6,7 +6,7 @@ class GifSearch extends React.Component {
     super(props);
     this.state = {
       input: ""
-    }
+    };
   }
   
   handleChange = event => {    
