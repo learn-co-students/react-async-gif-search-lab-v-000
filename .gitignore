@@ -1,4 +1,4 @@
-# Created by https://www.gitignore.io/api/node
+# Created by https://www.gitignore.io/api/node with addition
 
 .DS_Store
 
@@ -31,3 +31,6 @@ jspm_packages
 
 # Learn-specific .results.json
 .results.json
+
+# Environment variables
+.env
