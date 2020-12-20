@@ -13,7 +13,6 @@ class GifListContainer extends React.Component {
     };
   }
   
-
   fetchGifs(event) {
     event.preventDefault();
 
@@ -26,9 +25,7 @@ class GifListContainer extends React.Component {
         let joined = this.state.gifs.concat(datum.images.original.url);
         this.setState({
           gifs: joined
-        });
-        console.log('this.state:', this.state);
-        
+        });        
       });
     });
   }
