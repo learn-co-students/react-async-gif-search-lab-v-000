@@ -1,17 +1,29 @@
 import React, { Component } from 'react';
 
-const MY_KEY = process.env.REACT_APP_API_KEY;
-    console.log('MY_KEY:', MY_KEY);
+import GifSearch from '../components/GifSearch'
 
 class GifListContainer extends React.Component {
-  state = { gifs: [] };
+  // state = { gifs: [] };
 
   componentDidMount(query) {
-    // const MY_KEY = process.env.REACT_APP_API_KEY;
-    // console.log('MY_KEY:', MY_KEY);
-    // const q = query
-    fetch(`https://api.giphy.com/v1/gifs/search?q=dolphin&api_key=${MY_KEY}&rating=g`)
-  }  
+    console.log('query:', query);
+    
+    fetch(`https://api.giphy.com/v1/gifs/search?q=${query}&api_key=${process.env.REACT_APP_API_KEY}&rating=g`)
+    .then(response => (response.json()))
+    .then(data => {
+      data.data.forEach(datum => {
+        console.log('datum.images.original.url:', datum.images.original.url);
+      })
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        < GifSearch />
+      </div>
+    )
+  }
 }
 
-// export default GifListContainer
+export default GifListContainer
