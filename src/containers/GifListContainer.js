@@ -28,7 +28,7 @@ class GifListContainer extends React.Component {
       .then(data => {
         console.log("data", data)
         this.setState({
-          gifs: data.map(gif => ({
+          gifs: data.data.map(gif => ({
             url: gif.images.original.url
           }))
         })

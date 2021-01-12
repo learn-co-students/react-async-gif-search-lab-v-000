@@ -6,7 +6,9 @@ const GifList = props =>  {
 
 
   const givenGifs = props.firstThreeGifs.map(gif => {
-            return <img key={gif.id} src={gif.images.original.url} />
+            console.log("propss.......", props)
+            console.log("gif.......", gif)
+            return <img key={gif.id} src={gif.url} />
       })
 
 
@@ -25,5 +27,5 @@ const GifList = props =>  {
 
 }
 
-export default GifList
+export default GifList;
 // you can put console logs right under the render, but i guess not in the return
