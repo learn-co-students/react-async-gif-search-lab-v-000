@@ -1,4 +1,5 @@
 import React from 'react'
+import GiftListContainer from '../containers/GifListContainer'
 
 import NavBar from './NavBar'
 
@@ -8,6 +9,9 @@ const App = () => {
   return (
     <div>
         < NavBar color='black' title="Giphy Search" />
+        <div className="container">
+          <GiftListContainer />
+        </div>
     </div>
   )
 }
