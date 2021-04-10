@@ -1,14 +1,32 @@
 import React, { Component } from 'react'
 import GifList from '../components/GifList'
+import GifSearch from '../components/GifSearch'
 
 class GifListContainer extends Component {
+    constructor() {
+        super();
 
-    state = {
+        this.state = {
         gifObjs: []
+        }
     }
 
     componentDidMount() {
-        fetch('https://api.giphy.com/v1/gifs/search?q=dolphin&api_key=dc6zaTOxFJmzC&rating=g')
+        this.gifSearchCb()
+    }
+
+    render() {
+        return (
+            <div>
+                <GifSearch gifSearchCb={this.gifSearchCb}/>
+                <GifList gifObjs={this.state.gifObjs}/>
+            </div>
+        )
+    }
+
+    gifSearchCb = (query = 'dolphin') => {
+
+        fetch(`https://api.giphy.com/v1/gifs/search?q=${query}&api_key=dc6zaTOxFJmzC&rating=g`)
         .then(res => res.json())
         .then(json => {
             console.log(json.data.slice(0, 3))
@@ -16,13 +34,6 @@ class GifListContainer extends Component {
                 gifObjs: json.data.slice(0, 3)
             })
         })
-    }
-
-    render() {
-        return (
-
-            <GifList gifObjs={this.state.gifObjs}/>
-        )
     }
 }
 
