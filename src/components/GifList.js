@@ -1,6 +1,6 @@
 import React from 'react'
 
-//another way to define a component but doesnt work
+//another way to define a component but doesnt work either
 // const GifList = props => {
 //     return(
 //         <ul>
@@ -19,10 +19,11 @@ import React from 'react'
      render(){
          return(
             <ul>
-            {this.props.gifs.map(
+         {this.props.gifs.map(
                 (gif, index) => 
-              <li key={index}> <img key={gif.url} src={gif.url} alt="gif"/> </li>          
-            )}
+              <li key={index}> <img key={gif.url} src={gif.images.original.url} alt="gif"/> </li>          
+            )} 
+          
           </ul>
          )
      }

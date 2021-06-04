@@ -25,6 +25,8 @@ fetchGIFs = (searchTerm) => {
     .then(response => response.json())
     .then(gifs => {
       console.log(gifs.data)
+      this.setState({gifs: gifs.data})
+      
     })
   }
 
